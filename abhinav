@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flowers Website</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-image: url('flowers.jpg'); /* Background image of flowers */
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    color: white;
+  }
+
+  .container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .button-container {
+    margin-top: 20px;
+  }
+
+  .button {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+
+  #popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 999;
+  }
+
+  #moveButton {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Welcome to the Flowers Website</h1>
+  <div class="button-container">
+    <button class="button" onclick="showPopup()">Show Popup</button>
+    <button id="moveButton" class="button" onclick="moveButton()">Move Button</button>
+  </div>
+</div>
+
+<div id="popup">
+  <p>This is a popup with some text!</p>
+  <button class="button" onclick="hidePopup()">Close</button>
+</div>
+
+<script>
+  function showPopup() {
+    document.getElementById('popup').style.display = 'block';
+  }
+
+  function hidePopup() {
+    document.getElementById('popup').style.display = 'none';
+  }
+
+  function moveButton() {
+    var button = document.getElementById('moveButton');
+    var newTop = Math.random() * (window.innerHeight - button.clientHeight);
+    var newLeft = Math.random() * (window.innerWidth - button.clientWidth);
+    button.style.top = newTop
